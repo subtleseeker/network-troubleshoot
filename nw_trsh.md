@@ -1,4 +1,5 @@
-brew install iproute2mac
+## n/w troubleshooting guide
+`brew install iproute2mac`
 
 ### Layer 1: PL
 ```
@@ -64,13 +65,14 @@ tcp LISTEN 0 128 *:22 *:* users:(("sshd",pid=3366,fd=3))
 tcp LISTEN 0 100 127.0.0.1:25 *:* users:(("master",pid=3600,fd=13))
 ```
 Let’s break down these flags:
-
+```
 -t - Show TCP ports.
 -u - Show UDP ports.
 -n - Do not try to resolve hostnames.
 -l - Show only listening ports.
 -p - Show the processes that are using a particular socket.
 -4 - Show only IPv4 sockets.
+```
 
 telnet: ping for ports: uses TCP
 ```
@@ -85,25 +87,26 @@ Ncat: Connection refused.
 ```
 
 nmap
-    TCP and UDP port scanning remote machines.
-    OS fingerprinting.
-    Determining if remote ports are closed or simply filtered.
+- TCP and UDP port scanning remote machines.
+- OS fingerprinting.
+- Determining if remote ports are closed or simply filtered.
 
 
 ---
+## Other utils
 
-iftop - show big users on the network/router.
-
----
-Ping without DNS resolution
+- iftop - show big users on the network/router.
+- Ping without DNS resolution
 ```
 ping -n w.x.y.z
 ```
-Steps:
-    Your network interface is listed and enabled. Otherwise, check the device driver – see /Ethernet#Device driver or /Wireless#Device driver.
-    You are connected to the network. The cable is plugged in or you are connected to the wireless LAN.
-    Your network interface has an IP address.
-    Your routing table is correctly set up.
-    You can ping a local IP address (e.g. your default gateway).
-    You can ping a public IP address (e.g. 8.8.8.8, which is a Google DNS server and is a convenient address to test with).
-    Check if you can resolve domain names (e.g. archlinux.org).
+---
+
+## Troubleshooting Steps:
+1. Your network interface is listed and enabled. Otherwise, check the device driver – see /Ethernet#Device driver or /Wireless#Device driver.
+2. You are connected to the network. The cable is plugged in or you are connected to the wireless LAN.
+3. Your network interface has an IP address.
+4. Your routing table is correctly set up.
+5. You can ping a local IP address (e.g. your default gateway).
+6. You can ping a public IP address (e.g. 8.8.8.8, which is a Google DNS server and is a convenient address to test with).
+7. Check if you can resolve domain names (e.g. archlinux.org).
